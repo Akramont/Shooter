@@ -10,20 +10,13 @@ public class FireBoll : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = speed;
+        rb.velocity = speed*speed;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = speed;
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Destroy")
-        {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-        }
+        rb.velocity = speed * speed;
     }
 }

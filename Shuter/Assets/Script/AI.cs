@@ -73,6 +73,7 @@ public class AI : MonoBehaviour
             {
                 anim.SetFloat("Speed", 0);
                 gameObject.layer = 10;
+                transform.position = new Vector3(-30, -80, 0);
             }
         }
         else

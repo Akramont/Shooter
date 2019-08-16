@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Destroy
+  - AreaOfTeleportation
+  - Batton
+  - Barier
   layers:
   - Default
   - TransparentFX
