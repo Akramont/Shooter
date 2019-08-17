@@ -27,16 +27,12 @@ public class Batton : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)             //Взаимодействия между областями и игроком по тегам
     {
-
         if (collision.gameObject.tag == "Player")    //Барьер вкл
         {
             Sprite.color = Color.red;
             Collider.isTrigger = false;
 
         }
-
-
-
     }
 
     private void Start()

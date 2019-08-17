@@ -7,6 +7,7 @@ TagManager:
   - AreaOfTeleportation
   - Batton
   - Barier
+  - Destroy
   layers:
   - Default
   - TransparentFX
