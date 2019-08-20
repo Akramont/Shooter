@@ -83,7 +83,6 @@ public class AI : MonoBehaviour
             {
                 fireboll.Add(i);
                 shut = Time.time;
-                print("fire");
             }
         }
     }
