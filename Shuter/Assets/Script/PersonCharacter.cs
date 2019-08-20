@@ -42,7 +42,7 @@ public class PersonCharacter : MonoBehaviour
             rb2d.velocity = new Vector2(0f, 0f); // Обнуление скорости
             rb2d.AddForce(transform.up * 10f, ForceMode2D.Impulse); //Добавление силы в верх
         }
-        Vector2 movement = new Vector2(move * speed * Time.deltaTime, rb2d.velocity.y); //Скорость персонажа
+        Vector2 movement = new Vector2(move * speed, rb2d.velocity.y); //Скорость персонажа
         rb2d.velocity = movement; //Добавление скорости к физике
         AI.i++;
     }
