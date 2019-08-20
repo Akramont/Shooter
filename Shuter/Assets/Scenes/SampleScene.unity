@@ -1928,6 +1928,12 @@ PrefabInstance:
       propertyPath: FinishText
       value: 
       objectReference: {fileID: 1182042228}
+    - target: {fileID: 6387654853651894991, guid: 0617e5943df3f1f43817fdba807b746a,
+        type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 7492907348207500321, guid: d5e0a9104c200aa4ca7611c3a741043c,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0617e5943df3f1f43817fdba807b746a, type: 3}
 --- !u!1001 &8109304222375355061
