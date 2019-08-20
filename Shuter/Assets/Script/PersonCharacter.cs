@@ -37,7 +37,8 @@ public class PersonCharacter : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Q) && onJump)
         {
-            rb2d.AddForce(transform.up * 4f, ForceMode2D.Impulse);
+            rb2d.velocity = new Vector2(0f, 0f);
+            rb2d.AddForce(transform.up * 10f, ForceMode2D.Impulse);
         }
         Vector2 movement = new Vector2(move * speed, rb2d.velocity.y);
         rb2d.velocity = movement;
