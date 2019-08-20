@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public class PersonCharacter : MonoBehaviour
 {
-    public float delay;
-    private float shut = 0;
-    public float speed;
-    private Rigidbody2D rb2d;
-    private Animator anim;
-    public GameObject fireBall;
-    public Text FinishText;
-    private bool onJump = true;
+    public float delay;                 // Задержка между выстрелами
+    //public GameObject[] n;              // Префабы ботов
+    public float speed;                 // Скорость персонажа
+    public GameObject bullet;           // Пуля
+    public Text FinishText;             // Текст победы
+
+    private float shut = 0;             // Время последнего выстрела
+    private Rigidbody2D rb2d;           // Физика персонажа
+    private Animator anim;              // Аниматор
+    private bool onJump = true;         // Проверка на прыжок
 
     void Start()
     {
@@ -23,47 +25,47 @@ public class PersonCharacter : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float move = Input.GetAxisRaw("Horizontal");
-        anim.SetFloat("Speed", Mathf.Abs(move));
-        if (Input.GetKey(KeyCode.E) && Time.time > shut + delay)
+        float move = Input.GetAxisRaw("Horizontal");  // Скорость от 1 до -1
+        anim.SetFloat("Speed", Mathf.Abs(move));      // Анимация
+        if (Input.GetKey(KeyCode.E) && Time.time > shut + delay) //
         {
-            anim.SetBool("Attack", true);
-            shut = Time.time;
+            anim.SetBool("Attack", true); // Анимация
+            shut = Time.time;             // Время выстрела
             Fire();
         }
         else
         {
-            anim.SetBool("Attack", false);
+            anim.SetBool("Attack", false); // Анимация 
         }
-        if (Input.GetKey(KeyCode.Q) && onJump)
+        if (Input.GetKey(KeyCode.Q) && onJump)  // Прыжок
         {
-            rb2d.velocity = new Vector2(0f, 0f);
-            rb2d.AddForce(transform.up * 10f, ForceMode2D.Impulse);
+            rb2d.velocity = new Vector2(0f, 0f); // Обнуление скорости
+            rb2d.AddForce(transform.up * 10f, ForceMode2D.Impulse); //Добавление силы в верх
         }
-        Vector2 movement = new Vector2(move * speed, rb2d.velocity.y);
-        rb2d.velocity = movement;
+        Vector2 movement = new Vector2(move * speed * Time.deltaTime, rb2d.velocity.y); //Скорость персонажа
+        rb2d.velocity = movement; //Добавление скорости к физике
         AI.i++;
     }
 
     void Fire()
     {
-        Instantiate(fireBall, transform.position + new Vector3(0.55f, -0.55f, 0), Quaternion.identity);
+        Instantiate(bullet, transform.position + new Vector3(0.55f, -0.55f, 0), Quaternion.identity); //Создание пули
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision) // Постоянное столкновение с чем-то
     {
         if (collision.gameObject.tag == "Ground")
         {
-            onJump = true;
+            onJump = true; //Прыжок возможен
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision) // Окончание столкновения с чем-то
     {
-        onJump = false;
+        onJump = false; //Прыжок не возможен
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision) //Пересечения коллайдеров
     {
         if (collision.gameObject.tag == "Finish")
         {

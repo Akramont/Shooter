@@ -50,7 +50,7 @@ public class AI : MonoBehaviour
             {
                 gameObject.layer = 9;
                 transform.position = positionList[i];
-                if (i != 0 && positionList[i] != positionList[i - 1])
+                if (i != 0 && positionList[i].x != positionList[i - 1].x)
                 {
                     anim.SetFloat("Speed", 1);
                 }
