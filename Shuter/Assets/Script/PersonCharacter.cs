@@ -12,6 +12,7 @@ public class PersonCharacter : MonoBehaviour
     private Animator anim;
     public GameObject fireBall;
     public Text FinishText;
+    private bool onJump = true;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class PersonCharacter : MonoBehaviour
     {
         float move = Input.GetAxisRaw("Horizontal");
         anim.SetFloat("Speed", Mathf.Abs(move));
-        if (Input.GetKey(KeyCode.E) && Time.time > shut+delay)
+        if (Input.GetKey(KeyCode.E) && Time.time > shut + delay)
         {
             anim.SetBool("Attack", true);
             shut = Time.time;
@@ -33,6 +34,10 @@ public class PersonCharacter : MonoBehaviour
         else
         {
             anim.SetBool("Attack", false);
+        }
+        if (Input.GetKey(KeyCode.Q) && onJump)
+        {
+            rb2d.AddForce(transform.up * 4f, ForceMode2D.Impulse);
         }
         Vector2 movement = new Vector2(move * speed, rb2d.velocity.y);
         rb2d.velocity = movement;
@@ -44,7 +49,20 @@ public class PersonCharacter : MonoBehaviour
         Instantiate(fireBall, transform.position + new Vector3(0.55f, -0.55f, 0), Quaternion.identity);
     }
 
-    void OnTriggerEnter2D (Collider2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            onJump = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        onJump = false;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Finish")
         {
