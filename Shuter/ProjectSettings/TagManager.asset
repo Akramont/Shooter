@@ -8,6 +8,7 @@ TagManager:
   - Batton
   - Barier
   - Ground
+  - Destroy
   layers:
   - Default
   - TransparentFX
