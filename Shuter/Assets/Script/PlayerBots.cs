@@ -21,6 +21,7 @@ public class PlayerBots : MonoBehaviour
         bullet = new List<int>();
         player = GameObject.Find("Player");
         menu = GameObject.Find("PanelChange");
+        menu.SetActive(false);
     }
 
     void FixedUpdate()
@@ -35,7 +36,6 @@ public class PlayerBots : MonoBehaviour
             {
                 transform.position = new Vector3(-30, -80, 0);
             }
-            print("play");
         }
         else
         {
@@ -44,7 +44,6 @@ public class PlayerBots : MonoBehaviour
             {
                 isReward = true;
             }
-            print("stop");
         }
     }
 }

@@ -13,7 +13,6 @@ public class Destroy : MonoBehaviour
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D other)
     {
-        print("collider");
         if (other.gameObject.tag == "Destroy")
         {
             Destroy(gameObject);

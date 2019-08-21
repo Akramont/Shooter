@@ -11,7 +11,6 @@ public class FireBoll : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = speed;
-
     }
 
     // Update is called once per frame
@@ -22,7 +21,6 @@ public class FireBoll : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        print("collider");
         if (other.gameObject.tag == "Destroy")
         {
             Destroy(gameObject);

@@ -44,15 +44,15 @@ public class Player : MonoBehaviour
             players[i].gameObject.SetActive(false);
         }
         players[numberPlayer].gameObject.SetActive(true);
-        menu.SetActive(false);
+        //menu.SetActive(false);
     }
 
     void respawn()
     {
-        transform.position = respawnPlayer.transform.position;
         Instantiate(bots[numberPlayer], new Vector3(-30, -80, 0), Quaternion.identity);
+        transform.position = respawnPlayer.transform.position;
         enable();
-        AI.i = 0;
+        PlayerBots.i = 0;
     }
 
     void death()
@@ -72,6 +72,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        PlayerBots.i++;
         // Выстрел
         if (Input.GetAxisRaw("Fire1") == 1 && Time.time > shut + delay) //
         {
@@ -106,6 +107,7 @@ public class Player : MonoBehaviour
             rb2d.velocity = new Vector2(rb2d.velocity.x, 0f); // Обнуление скорости по y
             rb2d.AddForce(transform.up * 8f, ForceMode2D.Impulse); //Добавление силы в верх
         }
+        
     }
 
     void Update()
