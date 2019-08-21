@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - Destroy
   - Change
+  - BotPlayer
   layers:
   - Default
   - TransparentFX
