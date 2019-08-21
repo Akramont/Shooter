@@ -9,6 +9,7 @@ TagManager:
   - Barier
   - Ground
   - Destroy
+  - Change
   layers:
   - Default
   - TransparentFX
@@ -60,4 +61,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1932239065
+    locked: 0
+  - name: ChangePlayer
+    uniqueID: 3147924149
     locked: 0
