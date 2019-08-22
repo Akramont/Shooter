@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     private bool faceRight = true;      // Поворот направо
 
 
-    
+
     public void playerOne()
     {
         numberPlayer = 0;
@@ -102,33 +102,25 @@ public class Player : MonoBehaviour
         rb2d.velocity = movement;
 
         // Прыжок
+        if (rb2d.velocity.y == 0) //Если скорость по y рана 0 то прыжок возможен
+        {
+            onJump = true;
+        }
+        else
+        {
+            onJump = false;
+        }
         if (Input.GetAxisRaw("Jump") == 1 && onJump)
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, 0f); // Обнуление скорости по y
             rb2d.AddForce(transform.up * 8f, ForceMode2D.Impulse); //Добавление силы в верх
         }
-        
+
     }
 
     void Update()
     {
-        
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision) // Постоянное столкновение с чем-то
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            onJump = true; //Прыжок возможен
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision) // Окончание столкновения с чем-то
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            onJump = false; //Прыжок не возможен
-        }
     }
 
     void OnTriggerEnter2D(Collider2D collision) //Пересечения коллайдеров
@@ -139,7 +131,7 @@ public class Player : MonoBehaviour
             death();
         }
     }
-    
+
     void Fire()
     {
         if (faceRight)
