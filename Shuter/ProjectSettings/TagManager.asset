@@ -11,6 +11,9 @@ TagManager:
   - Destroy
   - Change
   - BotPlayer
+  - EnemyBullet
+  - Enemy
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX

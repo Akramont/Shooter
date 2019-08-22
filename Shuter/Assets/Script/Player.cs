@@ -22,7 +22,8 @@ public class Player : MonoBehaviour
     private bool onJump = true;         // Проверка на прыжок
     private SpriteRenderer[] sprite;    // Анимация перонажа
     private bool faceRight = true;      // Поворот направо
-
+    [SerializeField]
+    private int lifePlayer = 3;         // Жизнь игрока
 
 
     public void playerOne()
@@ -44,12 +45,12 @@ public class Player : MonoBehaviour
             players[i].gameObject.SetActive(false);
         }
         players[numberPlayer].gameObject.SetActive(true);
-        //menu.SetActive(false);
     }
 
     void respawn()
     {
         Instantiate(bots[numberPlayer], new Vector3(-30, -80, 0), Quaternion.identity);
+        lifePlayer = 3;
         transform.position = respawnPlayer.transform.position;
         enable();
         PlayerBots.i = 0;
@@ -57,6 +58,7 @@ public class Player : MonoBehaviour
 
     void death()
     {
+        transform.position = new Vector3(-30, -80, 0);
         menu.SetActive(true);
     }
 
@@ -102,7 +104,7 @@ public class Player : MonoBehaviour
         rb2d.velocity = movement;
 
         // Прыжок
-        if (rb2d.velocity.y == 0) //Если скорость по y рана 0 то прыжок возможен
+        if (rb2d.velocity.y == 0) //Если вертикальная скорость равна 0 то прыжок возможен
         {
             onJump = true;
         }
@@ -116,6 +118,10 @@ public class Player : MonoBehaviour
             rb2d.AddForce(transform.up * 8f, ForceMode2D.Impulse); //Добавление силы в верх
         }
 
+        if(lifePlayer == 0)
+        {
+            death();
+        }
     }
 
     void Update()
@@ -127,8 +133,12 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "AreaOfTeleportation")
         {
-            transform.position = new Vector3(-30, -80, 0);
-            death();
+            lifePlayer = 0;
+        }
+        if(collision.gameObject.tag == "EnemyBullet")
+        {
+            lifePlayer--;
+            Destroy(collision.gameObject);
         }
     }
 
