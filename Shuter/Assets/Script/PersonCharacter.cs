@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PersonCharacter : MonoBehaviour
 {
     public float delay;                 // Задержка между выстрелами
-    //public GameObject[] n;              // Префабы ботов
+    public GameObject[] bots;           // Префабы ботов
     public float speed;                 // Скорость персонажа
     public GameObject bullet;           // Пуля
     public Text FinishText;             // Текст победы
@@ -40,7 +40,7 @@ public class PersonCharacter : MonoBehaviour
         if (Input.GetKey(KeyCode.Q) && onJump)  // Прыжок
         {
             rb2d.velocity = new Vector2(0f, 0f); // Обнуление скорости
-            rb2d.AddForce(transform.up * 10f, ForceMode2D.Impulse); //Добавление силы в верх
+            rb2d.AddForce(transform.up * 8f, ForceMode2D.Impulse); //Добавление силы в верх
         }
         Vector2 movement = new Vector2(move * speed, rb2d.velocity.y); //Скорость персонажа
         rb2d.velocity = movement; //Добавление скорости к физике
