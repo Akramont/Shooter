@@ -9,7 +9,6 @@ public class AI : MonoBehaviour
     public GameObject fireBall;
     public GameObject master;
     public GameObject[] n;
-
     public KeyCode button;
     public static int i;
 

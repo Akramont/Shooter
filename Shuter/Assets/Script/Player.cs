@@ -25,7 +25,6 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int lifePlayer = 3;         // Жизнь игрока
 
-
     public void playerOne()
     {
         numberPlayer = 0;

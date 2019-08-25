@@ -10,12 +10,16 @@ public class PlayerBots : MonoBehaviour
     public static int i;
     public float delay = 0.2f;
     public GameObject menu;
+    public Vector3 offsetRight; 
+    public Vector3 offsetLeft;
 
     private bool isReward = false;
     private List<Vector3> positionList;
     private List<int> bullet;
     private int bulletNext;
     private float shut = 0;
+    private bool faceRight = true;
+    private SpriteRenderer sprite;
 
     void Start()
     {
@@ -24,6 +28,7 @@ public class PlayerBots : MonoBehaviour
         player = GameObject.Find("Player");
         menu = GameObject.Find("PanelChange");
         menu.SetActive(false);
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
@@ -32,10 +37,24 @@ public class PlayerBots : MonoBehaviour
         {
             if (i < positionList.Count)
             {
+                if (i < 10)
+                {
+                    bulletNext = 0;
+                }
                 transform.position = positionList[i];
+                if (i != 0 && positionList[i].x > positionList[i - 1].x)
+                {
+                    faceRight = true;
+                    sprite.flipX = false;
+                }
+                if (i != 0 && positionList[i].x < positionList[i - 1].x)
+                {
+                    faceRight = false;
+                    sprite.flipX = true;
+                }
                 if (bulletNext < bullet.Count && i == bullet[bulletNext])
                 {
-                    Instantiate(bulletRight, transform.position + new Vector3(0.55f, -0.55f, 0), Quaternion.identity);
+                    fire();
                     bulletNext++;
                 }
             }
@@ -50,12 +69,32 @@ public class PlayerBots : MonoBehaviour
             if (Input.GetAxisRaw("Fire1") == 1 && Time.time > shut + delay)
             {
                 bullet.Add(i);
-                shut = Time.time;      
+                shut = Time.time;
             }
             if (menu.active)
             {
                 isReward = true;
             }
+        }
+    }
+
+    void fire()
+    {
+        if (faceRight)
+        {
+            Instantiate(bulletRight, transform.position + offsetRight, Quaternion.identity); //Создание пули
+        }
+        else
+        {
+            Instantiate(bulletLeft, transform.position + offsetLeft, Quaternion.identity); //Создание пули
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision) //Пересечения коллайдеров
+    {
+        if (collision.gameObject.tag == "EnemyBullet")
+        {
+            Destroy(collision.gameObject);
         }
     }
 }
