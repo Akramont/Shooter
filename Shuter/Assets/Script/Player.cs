@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
         transform.position = respawnPlayer.transform.position;
         enable();
         PlayerBots.i = 0;
+        Timer.timingOfLastRespawn = Time.time;
     }
 
     void death()
