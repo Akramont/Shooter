@@ -137,7 +137,7 @@ MonoBehaviour:
     type: 3}
   bulletLeft: {fileID: 1268073231589408481, guid: d0057d0ce9fed1e4e8a2ddaf16234ab0,
     type: 3}
-  delay: 0.2
+  delay: 0.4
   menu: {fileID: 3679341693267725202, guid: ab9fc49c172a83d499c3726d7ab62e28, type: 3}
   offsetRight: {x: 0, y: 0.4, z: 0}
   offsetLeft: {x: 0, y: 0.4, z: 0}

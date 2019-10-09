@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7187464901039500021}
   - component: {fileID: 6317795846720051123}
   - component: {fileID: 7818977449019851383}
+  - component: {fileID: 3923976474525705887}
   m_Layer: 0
   m_Name: Bot1
   m_TagString: BotPlayer
@@ -137,7 +138,25 @@ MonoBehaviour:
     type: 3}
   bulletLeft: {fileID: 1268073231589408481, guid: d0057d0ce9fed1e4e8a2ddaf16234ab0,
     type: 3}
-  delay: 0.2
   menu: {fileID: 3679341693267725202, guid: ab9fc49c172a83d499c3726d7ab62e28, type: 3}
   offsetRight: {x: 0.2, y: 0.01, z: 0}
   offsetLeft: {x: -0.2, y: 0.01, z: 0}
+--- !u!95 &3923976474525705887
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7150001871028969839}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 894161d8ad2a91549b3eda2fd42d42e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

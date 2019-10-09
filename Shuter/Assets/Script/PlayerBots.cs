@@ -8,9 +8,8 @@ public class PlayerBots : MonoBehaviour
     public GameObject bulletRight;
     public GameObject bulletLeft;
     public static int i;
-    public float delay = 0.2f;
     public GameObject menu;
-    public Vector3 offsetRight; 
+    public Vector3 offsetRight;
     public Vector3 offsetLeft;
 
     private bool isReward = false;
@@ -20,6 +19,8 @@ public class PlayerBots : MonoBehaviour
     private float shut = 0;
     private bool faceRight = true;
     private SpriteRenderer sprite;
+    private Animator anim;              // Аниматор
+    private float delay = Player.delay;
 
     void Start()
     {
@@ -29,6 +30,7 @@ public class PlayerBots : MonoBehaviour
         menu = GameObject.Find("PanelChange");
         menu.SetActive(false);
         sprite = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -46,16 +48,28 @@ public class PlayerBots : MonoBehaviour
                 {
                     faceRight = true;
                     sprite.flipX = false;
+                    anim.SetFloat("Speed", 1f);
                 }
-                if (i != 0 && positionList[i].x < positionList[i - 1].x)
+
+                else if (i != 0 && positionList[i].x < positionList[i - 1].x)
                 {
                     faceRight = false;
                     sprite.flipX = true;
+                    anim.SetFloat("Speed", 1f);
                 }
-                if (bulletNext < bullet.Count && i == bullet[bulletNext])
+                else
                 {
+                    anim.SetFloat("Speed", 0f);
+                }
+                if (bulletNext < bullet.Count && i >= bullet[bulletNext])
+                {
+                    anim.SetBool("Attack", true);
                     fire();
                     bulletNext++;
+                }
+                else
+                {
+                    anim.SetBool("Attack", false);
                 }
             }
             else

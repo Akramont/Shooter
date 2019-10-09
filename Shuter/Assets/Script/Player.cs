@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public float delay = 0.2f;          // Задержка между выстрелами
+    public static float delay = 0.4f;   // Задержка между выстрелами
     public float speed;                 // Скорость персонажа
     public int numberPlayer;            // Номер активного персонажа
     public GameObject[] players;        // Список персонажей
@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     private bool faceRight = true;      // Поворот направо
     [SerializeField]
     private int lifePlayer = 3;         // Жизнь игрока
+    private Animator anim;              // Аниматор
 
     public void playerOne()
     {
@@ -69,6 +70,7 @@ public class Player : MonoBehaviour
         {
             sprite[i] = players[i].GetComponent<SpriteRenderer>();
         }
+        anim = players[numberPlayer].GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -77,12 +79,18 @@ public class Player : MonoBehaviour
         // Выстрел
         if (Input.GetAxisRaw("Fire1") == 1 && Time.time > shut + delay) //
         {
+            anim.SetBool("Attack", true);
             shut = Time.time;             // Время выстрела
             Fire();
+        }
+        else
+        {
+            anim.SetBool("Attack", false);
         }
 
         // Перемещение
         float move = Input.GetAxisRaw("Horizontal");
+        anim.SetFloat("Speed", Mathf.Abs(move));
         if (move == 1) //Перемещение направо
         {
             faceRight = true;
