@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae55a5fb6a59564a9486e8bb2f70332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 8, y: 0}
+  speed: {x: 25, y: 0}
 --- !u!114 &2575395905524707135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,4 +165,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4098c925082cce4891f7d58689cd587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 2
+  delay: 0.5
