@@ -4,15 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class MenuScript : MonoBehaviour
-{
-    public GameObject mainMenu;
-    public GameObject levelSelect;
-
-    public void playPressed()
-    {
-        levelSelect.SetActive(true);
-        mainMenu.SetActive(false);
-    }
+{ 
 
     public void exitPressed()
     {
@@ -24,10 +16,15 @@ public class MenuScript : MonoBehaviour
         SceneManager.LoadScene("LevelTest");
     }
 
-    public void backLevelSelect()
+    public void levelOne()
     {
-        levelSelect.SetActive(false);
-        mainMenu.SetActive(true);
+        SceneManager.LoadScene("LevelOne");
     }
+
+    public void levelTwo()
+    {
+        SceneManager.LoadScene("LevelTwo");
+    }
+
 
 }

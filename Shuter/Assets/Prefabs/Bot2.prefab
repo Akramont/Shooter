@@ -68,8 +68,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -468382295
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -5895240819618427197, guid: c97dfc7d3fe5141499582bd8aa4dd685,
     type: 3}
@@ -137,4 +137,7 @@ MonoBehaviour:
     type: 3}
   bulletLeft: {fileID: 1268073231589408481, guid: d0057d0ce9fed1e4e8a2ddaf16234ab0,
     type: 3}
+  delay: 0.4
   menu: {fileID: 3679341693267725202, guid: ab9fc49c172a83d499c3726d7ab62e28, type: 3}
+  offsetRight: {x: 0, y: 0.4, z: 0}
+  offsetLeft: {x: 0, y: 0.4, z: 0}
